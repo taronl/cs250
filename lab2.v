@@ -1,6 +1,6 @@
-`timescale 1ns/100ps
+`timescale 1ns/100ns
 
-module RisingEdge_DFlipFlop(
+module dflipflop(
   input wire clk, d,
   output reg q
 );
@@ -9,8 +9,16 @@ module RisingEdge_DFlipFlop(
   
   always @(posedge clk)
     begin
-      q <= d + i[0];
-      i <= i + 1;
+      q <= d;
     end
+  
+endmodule
+
+module dflipflop_top(
+  input clk,
+  output q
+);
+  
+  dflipflop uut(clk, 0, q);
   
 endmodule
