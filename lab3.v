@@ -1,33 +1,36 @@
 module fib(
-  input wire clk,
-  output reg y
+  input clk,
+  output reg [3:0] y
 );
   
-  reg [3:0] y;
-  reg [3:0] previous, current, counter;
+  reg [3:0] prev, cnt;
   
-  always @(posedge clk)
+  initial
     begin
-      previous <= 4'd0;
-      current <= 4'd1;
-      counter <= 4'd1;
+      //cnt = 4'd0;
+      prev = 4'd0;
+      y = 4'd1;
     end
   
   always @(posedge clk)
     begin
-      counter <= counter +1;
-      current <= current + previous;
-      previous <= current;
+      //cnt <= cnt + 1;    
+      y <= y + prev;
+      prev <= y;
       
     end
       
 endmodule
 
-module fib_top(
+module cnt(
+  
+);
+
+/*module fib_top(
   input wire clk,
-  output reg y
+  output reg [3:0] y
 );
   
-  module fib uut(clk);
+  fib uut(clk, y);
     
-  endmodule
+endmodule*/
