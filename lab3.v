@@ -7,24 +7,26 @@ module fib(
   
   initial
     begin
-      //cnt = 4'd0;
+      cnt = 4'd0;
       prev = 4'd0;
       y = 4'd1;
     end
   
   always @(posedge clk)
     begin
-      //cnt <= cnt + 1;    
+      if(cnt == 7)
+        begin
+          cnt <= 4'd0;
+          prev = 4'd0;
+          y = 4'd1;
+        end
+      cnt <= cnt + 1;    
       y <= y + prev;
       prev <= y;
       
     end
       
 endmodule
-
-module cnt(
-  
-);
 
 /*module fib_top(
   input wire clk,
