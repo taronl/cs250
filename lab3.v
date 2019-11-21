@@ -1,15 +1,16 @@
 module fib(
   input wire clk,
-  output reg y);
+  output reg y
+);
   
   reg [3:0] y;
   reg [3:0] previous, current, counter;
   
   always @(posedge clk)
     begin
-      previous <= 16'd0;
-      current <= 16'd1;
-      counter <= 16'd1;
+      previous <= 4'd0;
+      current <= 4'd1;
+      counter <= 4'd1;
     end
   
   always @(posedge clk)
@@ -19,7 +20,14 @@ module fib(
       previous <= current;
       
     end
-  
-   assign value = current;
       
 endmodule
+
+module fib_top(
+  input wire clk,
+  output reg y
+);
+  
+  module fib uut(clk);
+    
+  endmodule
