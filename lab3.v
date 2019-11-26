@@ -3,36 +3,27 @@ module fib(
   output reg [3:0] y
 );
   
-  reg [3:0] prev, cnt;
+  reg [3:0] prev;
   
   initial
     begin
-      cnt = 4'd0;
       prev = 4'd0;
       y = 4'd1;
     end
   
   always @(posedge clk)
     begin
-      if(cnt == 7)
+      if(y >= 13)
         begin
-          cnt <= 4'd0;
-          prev = 4'd0;
-          y = 4'd1;
+          prev <= 4'd0;
+          y <= 4'd1;
         end
-      cnt <= cnt + 1;    
-      y <= y + prev;
-      prev <= y;
+      else
+        begin  
+      	  y <= y + prev;
+      	  prev <= y;
+        end
       
     end
       
 endmodule
-
-/*module fib_top(
-  input wire clk,
-  output reg [3:0] y
-);
-  
-  fib uut(clk, y);
-    
-endmodule*/
