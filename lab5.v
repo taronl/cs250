@@ -1,24 +1,23 @@
-`timescale 1ns/100ns
-
-module dflipflop(
-  input wire clk, d,
-  output reg q
+module srflipflop(
+  input wire clk, set, reset,
+  output reg [4:0] q, qbar
 );
   
   reg [0:0] i;
   
   always @(posedge clk)
     begin
-      q <= d;
     end
   
 endmodule
 
-module dflipflop_top(
+/*
+module srflipflop_top(
   input clk,
   output q
 );
   
-  dflipflop uut(clk, 0, q);
+  srflipflop uut(clk, 0, q);
   
 endmodule
+*/
