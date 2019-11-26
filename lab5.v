@@ -1,12 +1,13 @@
-module srflipflop(
-  input wire clk, set, reset,
-  output reg [4:0] q, qbar
-);
+module srflipflop();
+  input wire clk, set, reset;
+  output reg [4:0] q, qbar;
+
   
   reg [0:0] i;
   
   always @(posedge clk)
     begin
+      xor(q
     end
   
 endmodule
