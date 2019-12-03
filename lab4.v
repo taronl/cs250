@@ -1,4 +1,4 @@
-module lab4(
+module paritychecker(
   input [7:0] bit_in,
   output parity
 );
@@ -6,8 +6,8 @@ module lab4(
     parity = ~^bit_in;
 endmodule
 
-module lab4_top(
+module paritychecker_top(
   output parity
 );
-  lab4 uut(8'b10001000, parity);
+  paritychecker uut(8'b10001000, parity);
 endmodule
