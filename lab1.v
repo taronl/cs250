@@ -9,5 +9,5 @@ endmodule
 module lab1_top(
   output y
 );
-  lab1 uut(1, 1, 1, y);
+  lab1 uut(1, 0, 1, y);
 endmodule
