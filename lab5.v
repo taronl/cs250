@@ -1,20 +1,20 @@
-module srflipflop(clk, st, rst, q, q1);
-  input wire clk, st, rst;
-  output reg [0:0] q, q1;
-  
+module srflipflop(
+  input wire clk, s, r,
+  output reg q, q1
+);
   initial
     begin
-      q = 1'b0;
-      q1 = 1'b1;
+      q = 0;
     end
-  
   always @(posedge clk)
     begin
-      case({st,rst})
-        {1'b0, 1'b0}: begin q<=q; q1<=q1; end
-        {1'b0, 1'b1}: begin q<=1'b0; q1<=1'b1; end
-        {1'b1, 1'b0}: begin q<=1'b1; q1<=1'b0; end
-        {1'b1, 1'b1}: begin q<=1'bx; q1<=1'bx; end
-      endcase
+      q1 <= ~(~(s | q) | r);
     end
+endmodule
+
+module srflipflop_top(
+  input clk, s, r,
+  output q, q1
+);
+  srflipflop uut(clk, 1, 0, q, q1);
 endmodule
