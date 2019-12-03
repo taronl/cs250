@@ -1,5 +1,3 @@
-`timescale 1ns/100ns
-
 module dflipflop(
   input wire clk, d,
   output reg q
@@ -15,10 +13,8 @@ module dflipflop(
 endmodule
 
 module dflipflop_top(
-  input clk,
+  input clk, d,
   output q
 );
-  
   dflipflop uut(clk, 0, q);
-  
 endmodule
