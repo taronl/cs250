@@ -2,28 +2,18 @@ module walksignal(
   input clk, x, y,
   output reg [0:0] sx, sy
   );
+  bit temp1, temp2; 
   always @(posedge clk)
     begin
-      if((x==0)&(y==0))
-        begin
-          sx <= 0;
-          sy <= 0;
-        end
-      if((x==1)&(y==0))
-        begin
-          sx <= x;
-          sy <= y;
-        end
-      if((x==0)&(y==1))
-        begin
-          sx <= x;
-          sy <= y;
-        end
+      sx <= (x&~y);
+      sy <= (~x&y);
       if((x==1)&(y==1))
         begin
-          sx <= x;
-          sy <= x;
+          sx <= temp1;
+          sy <= temp2;
         end
+      temp1 <= sx;
+      temp2 <= sy;
     end
 endmodule
 
@@ -31,5 +21,5 @@ module walksignal_top(
   input clk, x, y,
   output reg sx, sy
 );
-  walksignal uut(clk, 0, 0, sx,sy);
+  walksignal uut(clk, 1, 1, sx,sy);
 endmodule
